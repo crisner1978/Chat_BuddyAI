@@ -11,7 +11,7 @@ export default function formatMessage(message: Message | DocumentData) {
   ) {
     return (
       <pre className='w-full overflow-x-auto rounded-md bg-black p-10'>
-        <code className='w-full text-white'>{text.substr(1).trim()}</code>
+        <code className='w-full text-white'>{text.trim()}</code>
       </pre>
     )
   } else if (text.startsWith('1.')) {
