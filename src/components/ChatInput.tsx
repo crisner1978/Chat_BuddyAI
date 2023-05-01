@@ -16,7 +16,7 @@ export default function ChatInput({ chatId }: { chatId: string }) {
     fallbackData: 'text-davinci-003',
   })
 
-  const sendPrompt = async (e: React.FormEvent<HTMLFormElement>) => {
+  const sendPrompt = async (e: React.FormEvent<HTMLFormElement> | React.KeyboardEvent<HTMLTextAreaElement>) => {
     e.preventDefault()
     if (!prompt) return
     const input = prompt.trim()
