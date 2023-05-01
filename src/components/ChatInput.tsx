@@ -93,7 +93,13 @@ export default function ChatInput({ chatId }: { chatId: string }) {
             </div>
           </div>
           <div className='relative flex w-full flex-grow flex-col rounded-md border border-black/10 bg-white py-2 shadow-[0_0_10px_rgba(0,0,0,0.10)] dark:border-gray-900/50 dark:bg-gray-700 dark:text-white md:py-3 md:pl-4'>
-            <input
+            <textarea
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' && !e.shiftKey) {
+                  e.preventDefault()
+                  sendPrompt(e)
+                }
+              }}
               onChange={(e) => setPrompt(e.target.value)}
               value={prompt}
               tabIndex={0}
@@ -103,7 +109,7 @@ export default function ChatInput({ chatId }: { chatId: string }) {
               className='m-0 w-full resize-none border-0 bg-transparent p-0 pl-2 pr-7 outline-none focus:ring-0 focus-visible:ring-0 md:pl-0'
             />
             <button
-              type='submit'
+              type='button'
               className='absolute bottom-1.5 right-1 rounded-md p-1 text-gray-500 hover:bg-gray-900 enabled:hover:text-gray-400 disabled:opacity-40 disabled:hover:bg-transparent md:bottom-2.5 md:right-2'
               disabled={!prompt || !session}>
               <PaperAirplaneIcon
